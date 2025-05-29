@@ -1,0 +1,80 @@
+- add a reveal system 
+-->  works when people are playing on the same computer
+--> "Do you want to see your cards? Which player are you?"
+-----> yes maggie
+--------> "Maggie's cards: 1-Spades, 6-Hearts"
+check
+
+
+needs:
+--> betting system
+--> who's cards is better
+----** tells you what kind of card you have (?)
+----**^ e.g high card, 
+----**** who wins
+--> placing (printing) the flop
+-> add fold
+
+extra:
+-- explain rules?
+
+
+ for (String card: flop) {
+
+            player1.printName();
+            System.out.println(", would you like to bet? (y/n)");
+
+            String p1Ans = scanner.nextLine();
+            if (p1Ans.equals("y")) {
+                System.out.print("Enter your bet: ");
+                int p1Bet = scanner.nextInt();
+                System.out.println("Coins: " + player1.subtractBet(p1Bet));
+                //System.out.println("Total coins: " + player1.getAmount());
+
+                System.out.println("");
+                player2.printName();
+                System.out.println(", would you like to (c)all, (r)aise, or (f)old?");
+                String p2Ans = scanner.nextLine();
+                if (p2Ans.equals("r")) {
+                    System.out.print("Enter your bet: ");
+                    int p2Bet = scanner.nextInt();
+                    System.out.println("Coins: " + player2.subtractBet(p2Bet));
+                }
+                else if (p2Ans.equals("c")) {
+                    System.out.println("Coins: " + player2.subtractBet(p1Bet));
+                }
+                else if (p2Ans.equals("f")) {
+                    player1.printName();
+                    System.out.println("wins the game!");
+                }
+            }
+
+            else if (p1Ans.equals("n")) {
+                System.out.println("Total coins: " + player1.getAmount());
+
+                System.out.println("++++");
+
+                player2.printName();
+                System.out.println(", would you like to bet? (y/n)");
+
+                String p2Answ = scanner.nextLine();
+                if (p2Answ.equals("y")) {
+                    System.out.print("Enter your bet: ");
+                    int p2Bet = scanner.nextInt();
+                    System.out.println("Coins: " + player2.subtractBet(p2Bet));
+                //System.out.println("Total coins: " + player2.getAmount());
+                }
+                else if (p2Answ.equals("n")) {
+                    System.out.println("Total coins: " + player2.getAmount());
+
+                }
+            }
+
+            System.out.println("");
+            System.out.println("*----*");
+            System.out.print("Flop is... ");
+            System.out.println(card);
+            //System.out.println(flop.get(i));
+            System.out.println("*----*");
+
+        }
